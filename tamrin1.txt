@@ -1,0 +1,58 @@
+برنامه ای بنویسید كه نام و شماره تلفن تعدادی از مشتریان مخابرات را از ورودی خوانده، در آرایه هایی ذخیره نماید. شماره تلفن ها در آرایه عددی و نام مشتریان در آرایه ای از اشلاره گرهای رشته ای ذخیره شوند. سپس نامی از ورودی خوانده شده شماره تلفن وی را مشخص كرده، در خروجی چاپ كند. برناممه باید برای ادامه كار، از كاربر سوال كند. اگر كاربر جواب منفی داد، برنامه خاتمه پیدا می كند. توابعی برای خواندن اطلاعات، جستجو و چاپ نتایج جستجو بنویسید.
+
+
+#include<iostream.h>
+#include<conio.h>
+#include<string.h>
+void input(char **names, int *numbers, int n) ;
+int search(char **names, int n, char *name) ;
+void output(int *numbers, int index) ;
+int main(){
+char **names, name[21];
+int *numbers, n, index;
+char key;
+clrscr() ;
+cout << " Enter Count : " ;
+cin >> n;
+names = new char * [n];
+numbers = new int [n];
+input (names , numbers, n);
+do {
+cout << " Enter Name For Search: " ;
+cin.get ();
+cin.get ( name , 20 ) ;
+index = search(names, n, name);
+if (index != -1){
+output(numbers, index);
+cout << " For a new search press <y>\n" ;
+} else
+cout << " Not Found, for a new search press <y>\na" ;
+key = getch();
+}
+while (key == 'y');
+return 0 ;
+}
+//************************************************************
+void input(char **names, int *numbers, int n){
+char *name;
+for (int i = 0; i < n; i++){
+name = new char [21];
+cout << " Enter Name : " ;
+cin.get();
+cin.get ( name , 20 ) ;
+*(names + i) = name;
+cout << " Enter Phone Number : " ;
+cin >> *(numbers + i);
+}
+}
+int search(char **names, int n, char *name){
+for (int i = 0; i < n; i++){
+if (strcmp( *(names + i) , name) == 0)
+return i;
+}
+return -1;
+}
+void output(int *numbers, int index){
+cout << " Phone Number is : " ;
+cout << *(numbers + index);
+}

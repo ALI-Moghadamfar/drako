@@ -1,0 +1,49 @@
+برنامه ی بنویسید كه با خواندن تعدادی عدد از ورودی، آنها را در آرایه قرار دهد. سپس كلیه عناصر آرایه را بر عنصر وسط تقسیم كند. اگر عنصر وسط صفر باشد، بر عنصر بعد از عنصر وسط تقسیم كند
+
+
+
+
+
+
+
+
+
+
+#include <iostream.h>
+#include <conio.h>
+void action(int a[],int loc,int n);
+//************************************************
+int main()
+{
+int i,mid,n,a[100],sign=-1;
+clrscr();
+cout << endl << " Enter n:" ;
+cin >> n;
+mid=n/2;
+for(i=0;i<n;i++)
+{
+cout << endl << " Enter a[" << i+1 << "]:";
+cin >> a[i];
+}
+for(i=0;i<=mid;i++)
+{
+if ( a[mid+(sign*i)]!=0)
+{
+action(a,mid+(sign*i),n);
+break;
+}
+if (sign==1) i--;
+sign=-sign;
+}
+if(i>mid)
+cout << endl << "All element are zero";
+getch();
+return 0;
+}
+//************************************************
+void action(int a[],int loc,int n)
+{
+int i;
+for (i=0;i<n;i++)
+cout << endl << a[i] << " / " << a[loc] << " =" << (float) a[i]/a[loc];
+}
